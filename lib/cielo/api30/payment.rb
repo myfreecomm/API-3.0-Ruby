@@ -1,3 +1,5 @@
+require "cielo/api30/payment/status"
+
 module Cielo
   module API30
     class Payment
@@ -96,6 +98,10 @@ module Cielo
         payment.address = data["Address"]
 
         payment
+      end
+
+      def success?
+        Status.success?(status)
       end
 
       def as_json(options={})
