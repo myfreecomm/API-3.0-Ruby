@@ -1,5 +1,6 @@
 require "cielo/api30/environment"
 require "cielo/api30/merchant"
+require "cielo/api30/client"
 
 require "cielo/api30/address"
 require "cielo/api30/credit_card"
