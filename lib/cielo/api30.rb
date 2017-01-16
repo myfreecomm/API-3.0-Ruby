@@ -1,6 +1,7 @@
 require "cielo/api30/environment"
 require "cielo/api30/merchant"
 require "cielo/api30/client"
+require "cielo/api30/sale_return_info"
 
 require "cielo/api30/address"
 require "cielo/api30/credit_card"
@@ -14,6 +15,10 @@ require "cielo/api30/request/query_sale_request"
 require "cielo/api30/request/update_sale_request"
 
 module Cielo
+  def self.root_path
+    File.dirname __dir__
+  end
+
   module API30
     def self.client(merchant, environment = nil)
       Client.new(merchant, environment)
