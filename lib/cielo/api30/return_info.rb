@@ -11,7 +11,7 @@ module Cielo
   # @attr [String] client_message Mensagem que pode ser exibida para cliente
   # @attr [Boolean] retryable Indica se é permitida a retentativa
   # @attr [Boolean] card_error Indica se o problema está relacionado ao cartão utilizado
-  class SaleReturnInfo
+  class ReturnInfo
     attr_accessor :code, :message, :description, :action, :client_message, :retryable, :card_error
 
     def initialize(code)
@@ -50,8 +50,7 @@ module Cielo
     end
 
     def self.set_infos
-      puts File.join(Cielo.root_path, "cielo", "api30", "sale_return_infos.yml")
-      file = File.join(Cielo.root_path, "cielo", "api30", "sale_return_infos.yml")
+      file = File.join(Cielo::API30.root_path, "cielo", "api30", "return_infos.yml")
       @infos = YAML.load_file(file)
     end
   end

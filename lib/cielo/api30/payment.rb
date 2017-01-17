@@ -1,4 +1,5 @@
 require "cielo/api30/payment/status"
+require "cielo/api30/return_info"
 
 module Cielo
   module API30
@@ -44,7 +45,8 @@ module Cielo
                     :number,
                     :bar_code_number,
                     :digitable_line,
-                    :address
+                    :address,
+                    :return_info
 
       def initialize(amount, installments: 1)
         @amount = amount
@@ -96,6 +98,7 @@ module Cielo
         payment.bar_code_number = data["BarCodeNumber"]
         payment.digitable_line = data["DigitableLine"]
         payment.address = data["Address"]
+        payment.return_info = ReturnInfo.new(payment.return_code)
 
         payment
       end

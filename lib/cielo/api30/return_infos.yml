@@ -153,7 +153,7 @@
   description: "Transação não autorizada. Limite excedido/sem saldo."
   action: "Transação não autorizada. Entre em contato com seu banco emissor."
   retryable: true
-  card_error: true
+  card_error: false
 "52":
   message: "Cartão com dígito de controle inválido."
   description: "Não foi possível processar a transação. Cartão com dígito de controle inválido."
@@ -183,7 +183,7 @@
   description: "Transação não autorizada. Transação não permitida para o cartão."
   action: "Transação não autorizada. Entre em contato com seu banco emissor."
   retryable: true
-  card_error: true
+  card_error: false
 "58":
   message: "Transação não permitida. Opção de pagamento inválida."
   description: "Transação não permitida. Opção de pagamento inválida. Reveja se a opção de pagamento escolhida está habilitada no cadastro"
@@ -231,19 +231,19 @@
   description: "Transação não autorizada. Excedida a quantidade de transações para o cartão."
   action: "Transação não autorizada. Entre em contato com seu banco emissor."
   retryable: true
-  card_error: true
+  card_error: false
 "67":
   message: "Transação não autorizada. Cartão bloqueado para compras hoje."
   description: "Transação não autorizada. Cartão bloqueado para compras hoje. Bloqueio pode ter ocorrido por excesso de tentativas inválidas. O cartão será desbloqueado automaticamente à meia noite."
   action: "Transação não autorizada. Cartão bloqueado temporariamente. Entre em contato com seu banco emissor."
   retryable: true
-  card_error: true
+  card_error: false
 "70":
   message: "Transação não autorizada. Limite excedido/sem saldo."
   description: "Transação não autorizada. Limite excedido/sem saldo."
   action: "Transação não autorizada. Entre em contato com seu banco emissor."
   retryable: true
-  card_error: true
+  card_error: false
 "72":
   message: "Cancelamento não efetuado. Saldo disponível para cancelamento insuficiente."
   description: "Cancelamento não efetuado. Saldo disponível para cancelamento insuficiente. Se o erro persistir, entre em contato com a Cielo."

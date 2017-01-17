@@ -1,6 +1,7 @@
 require "cielo/api30"
+require "cielo/api30/return_info"
 
-describe Cielo::API30::SaleReturnInfo do
+describe Cielo::API30::ReturnInfo do
   subject { described_class.new("14") }
 
   describe "#initialize" do
@@ -45,5 +46,10 @@ describe Cielo::API30::SaleReturnInfo do
       subject.retryable = false
       expect(subject.retryable?).to eql(false)
     end
+  end
+
+  it "should never be card_error and retryable" do
+    codes = described_class.infos.select { |code, values| values["card_error"] && values["retryable"] }.keys
+    expect(codes).to be_empty
   end
 end
