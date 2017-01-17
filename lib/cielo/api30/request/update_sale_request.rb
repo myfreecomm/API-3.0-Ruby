@@ -1,7 +1,9 @@
 require "cielo/api30/request/cielo_request"
 
-module Cielo::Request
-    class UpdateSaleRequest < CieloRequest
+module Cielo
+  module API30
+    module Request
+      class UpdateSaleRequest < CieloRequest
         attr_accessor :environment,
                       :type,
                       :service_tax_amount,
@@ -10,27 +12,23 @@ module Cielo::Request
         private :environment, :type
 
         def initialize(type, merchant, environment)
-            super(merchant)
-
-            @environment = environment
-            @type = type
+          super(merchant)
+          @environment = environment
+          @type = type
         end
 
         def execute(payment_id)
-            uri = URI.parse(@environment.api + "1/sales/" + payment_id + "/" + type)
-            params = {}
+          uri = URI.parse([@environment.api, "1", "sales", payment_id, type].join("/"))
+          params = {}
 
-            if (amount != nil)
-                params["amount"] = amount
-            end
+          params["amount"] = amount if amount
+          params["serviceTaxAmount"] = service_tax_amount if service_tax_amount
 
-            if (service_tax_amount != nil)
-                params["serviceTaxAmount"] = service_tax_amount
-            end
+          uri.query = URI.encode_www_form(params)
 
-            uri.query = URI.encode_www_form(params)
-
-            Cielo::Payment.from_json(send_request("PUT", uri))
+          Cielo::API30::Payment.from_json(send_request("PUT", uri))
         end
+      end
     end
+  end
 end

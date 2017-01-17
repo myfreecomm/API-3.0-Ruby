@@ -30,28 +30,28 @@ Para criar um pagamento simples com cartão de crédito com o SDK, basta fazer:
 require "cielo/api30"
 
 # Configure seu merchant
-merchant = Cielo::Merchant.new("MERCHANT-ID", "MERCHANT-KEY")
+merchant = Cielo::API30.merchant("MERCHANT-ID", "MERCHANT-KEY")
 
 # Crie uma instância de Sale informando o ID do pagamento
-sale = Cielo::Sale.new("123")
+sale = Cielo::API30::Sale.new("123")
 
 # Crie uma instância de Customer informando o nome do cliente
-sale.customer = Cielo::Customer.new("Fulano de Tal")
+sale.customer = Cielo::API30::Customer.new("Fulano de Tal")
 
 # Crie uma instância de Payment informando o valor do pagamento
-sale.payment = Cielo::Payment.new(15700)
+sale.payment = Cielo::API30::Payment.new(15700)
 
 # Informe o tipo de pagamento que será utilizado
-sale.payment.type = Cielo::Payment::PAYMENTTYPE_CREDITCARD
+sale.payment.type = Cielo::API30::Payment::PAYMENTTYPE_CREDITCARD
 
 # Crie  uma instância de Credit Card utilizando os dados de teste
-sale.payment.credit_card = Cielo::CreditCard.new(security_code: "123", brand: "Visa")
+sale.payment.credit_card = Cielo::API30::CreditCard.new(security_code: "123", brand: "Visa")
 sale.payment.credit_card.expiration_date = "12/2018"
 sale.payment.credit_card.holder = "Fulano de Tal"
 sale.payment.credit_card.card_number = "0000000000000001"
 
 # Configure o SDK com seu merchant e o ambiente apropriado para criar a venda
-cielo_api = Cielo::API30.new(merchant, Cielo::Environment::sandbox)
+cielo_api = Cielo::API30.client(merchant, Cielo::API30::Environment::sandbox)
 
 # Crie a venda na Cielo
 sale = cielo_api.create_sale(sale)
