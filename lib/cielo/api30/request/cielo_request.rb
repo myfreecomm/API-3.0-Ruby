@@ -35,9 +35,11 @@ module Cielo
 
           response = client.send_request(method, uri.path, body, headers)
 
+          data = JSON.parse(response.body)
+
           raise CieloError, "Error [#{data[0]["Code"]}] #{data[0]["Message"]}" if response.code.to_i >= 400
 
-          JSON.parse(response.body)
+          data
         end
       end
     end
