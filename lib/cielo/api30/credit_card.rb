@@ -21,7 +21,7 @@ module Cielo
       def initialize(args = {})
         @security_code = args[:security_code]
         @brand = args[:brand]
-        @token = args[:token]
+        @card_token = args[:token]
       end
 
       def to_json(*options)

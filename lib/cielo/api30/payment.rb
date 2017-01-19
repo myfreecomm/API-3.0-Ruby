@@ -127,7 +127,8 @@ module Cielo
           Number: @number,
           BarCodeNumber: @bar_code_number,
           DigitableLine: @digitable_line,
-          Address: @address
+          Address: @address,
+          ReturnInfo: @return_info
         }
       end
     end
