@@ -1,3 +1,9 @@
+"ERROR":
+  message: "Ocorreu um falha não prevista"
+  description: "Ocorreu um falha não prevista. Entre em contato com o suporte do seu software."
+  action: "Ocorreu um falha não prevista. Entre em contato com a loja virtual."
+  retryable: false
+  card_error: false
 "00":
   message: "Transação autorizada com sucesso."
   description: "Transação autorizada com sucesso."

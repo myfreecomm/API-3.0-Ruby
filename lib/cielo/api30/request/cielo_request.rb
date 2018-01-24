@@ -40,6 +40,8 @@ module Cielo
           raise CieloError.new(data.first["Code"], data.first["Message"]) if response.code.to_i >= 400
 
           data
+        rescue JSON::ParserError
+          raise CieloError.new("ERROR", "Could not parse response with status '#{response.code}', message '#{response.message}' and body '#{response.body}'")
         end
       end
     end
